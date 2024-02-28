@@ -1,0 +1,74 @@
+<div id="root">
+  <div class="h-screen flex flex-col items-center justify-between pb-15">
+    <div class="bg-yellow-600 font-bold flex w-full h-14 sm:h-min items-center justify-between px-2">
+      <div class="hidden py-5 sm:block"></div>BINARY CLOCK<a href="#" target="_blank" rel="noopener noreferrer"></a>
+    </div>
+    <div class="h-screen flex flex-col items-center justify-center">
+      <div class="mb-5 drop-shadow-md">
+        <h2 id="dynamicTime"
+          class="text-4xl font-bold text-yellow-500 shadow-black [text-shadow:_0_2px_0_var(--tw-shadow-color)]">
+          {{ currentTime | date:'HH:mm:ss:SSS' }}
+        </h2>
+      </div>
+      <div>
+        <div class="flex py-2 font-light text-white text-base">
+          Hour: <div class="font-bold pl-1">{{ currentTime | date:'HH' }}</div>
+        </div>
+        <ul class="flex">
+          <li class="flex px-1.5" *ngFor="let bit of binaryHourArray;">
+            <div
+              [ngClass]="{
+              'border-yellow-600': bit === '0','bg-yellow-500 shadow-[0px_0px_8px_1px_#38a169] border-none': bit === '1'}"
+              class="w-4 h-4 sm:w-10 sm:h-10 rounded border-2 flex items-center justify-center transition bg-transparent">
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <div class="flex py-2 font-light text-base text-white ">Minute: <div class="font-bold pl-1"> {{ currentTime |
+            date:'mm' }}</div>
+        </div>
+        <ul class="flex">
+          <li class="flex px-1.5 " *ngFor="let bit of binaryMinuteArray;">
+            <div [ngClass]="{
+              'border-yellow-600': bit === '0',
+              'bg-yellow-500 shadow-[0px_0px_8px_1px_#38a169] border-none': bit === '1'
+            }"
+              class="w-4 h-4 sm:w-10 sm:h-10 rounded  border-2 flex items-center justify-center transition bg-transparent">
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <div class="flex py-2 font-light text-base text-white ">Second: <div class="font-bold pl-1"> {{ currentTime |
+            date:'ss' }}</div>
+        </div>
+        <ul class="flex">
+          <li class="flex px-1.5 " *ngFor="let bit of binarySecondsArray;">
+            <div [ngClass]="{
+              'border-yellow-600': bit === '0',
+              'bg-yellow-500 shadow-[0px_0px_8px_1px_#38a169] border-none': bit === '1'
+            }"
+              class="w-4 h-4 sm:w-10 sm:h-10 rounded border-yellow-600 border-2 flex items-center justify-center transition bg-transparent">
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <div class="flex py-2 font-light text-base text-white ">Millisecond: <div class="font-bold pl-1"> {{ currentTime
+            | date:'SSS' }}</div>
+        </div>
+        <ul class="flex">
+          <li class="flex px-1.5 " *ngFor="let bit of binaryMillisecondsArray;">
+            <div [ngClass]="{
+              'border-yellow-600': bit === '0',
+              'bg-yellow-500 shadow-[0px_0px_8px_1px_#38a169] border-none': bit === '1'
+            }"
+              class="w-4 h-4 sm:w-10 sm:h-10 rounded  border-2 flex items-center justify-center transition border-none">
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
